@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is part of the "Microtransacciones TPI" project for the Interdisciplinary Projects Workshop subject, at National University of Colombia
 
 ## Available Scripts
 
