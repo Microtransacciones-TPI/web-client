@@ -18,3 +18,65 @@
 .App-link {
   color: #09d3ac;
 }
+
+.result {
+  height: 60px;
+  background-color: #bbb;
+  width: 100%;
+}
+
+.result p {
+  font-size: 40px;
+  margin: 5px;
+
+}
+
+.calculator-body {
+  max-width: 400px;
+  margin: auto;
+}
+
+.button {
+  display: block;
+  background-color: #bbb;
+}
+
+button {
+  width: 33%;
+  height: 60px;
+  font-size: 30px;
+}
+
+.image { 
+   position: relative; 
+}
+
+h2 { 
+  position: absolute; 
+  top: 60%; 
+  left: 0; 
+  width: 100%; 
+}
+
+h2 span { 
+   color: black; 
+   font: bold 14px/16px Helvetica, Sans-Serif; 
+   letter-spacing: -1px;  
+   padding: 10px; 
+}
+
+h3 { 
+  position: absolute; 
+  top: 70%; 
+  left: 15%; 
+  width: 100%; 
+}
+
+h3 span { 
+  align-items: left;
+  justify-content: left;
+  color: black; 
+  font: bold 14px/16px Helvetica, Sans-Serif; 
+  letter-spacing: -1px;  
+  padding: 10px; 
+}
