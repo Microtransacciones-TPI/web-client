@@ -12,8 +12,8 @@ export default class Image extends Component {
 
     let defaults = {
       height: height || 100,
-      width: width || 100,
-      backgroundColor: 'white'
+      // width: width || 100,
+      // backgroundColor: 'white'
     };
 
     let important = {

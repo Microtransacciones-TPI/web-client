@@ -37,7 +37,7 @@
 }
 
 .button {
-  display: block;
+  /* display: block; */
   background-color: #bbb;
 }
 
@@ -52,9 +52,9 @@ button {
 }
 
 h2 { 
-  position: absolute; 
-  top: 60%; 
-  left: 0; 
+  /* position: absolute;  */
+  /* top: 60%;  */
+  /* left: 0;  */
   width: 100%; 
 }
 
@@ -66,9 +66,9 @@ h2 span {
 }
 
 h3 { 
-  position: absolute; 
-  top: 70%; 
-  left: 15%; 
+  /* position: absolute;  */
+  /* top: 70%;  */
+  /* left: 15%;  */
   width: 100%; 
 }
 
