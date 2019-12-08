@@ -3,10 +3,12 @@ import Badge from "./Badge";
 import Icon from "./Icon";
 import "./styles/styles.css";
 import { connect } from "react-redux";
-import { Navbar, Button } from "react-bootstrap";
+import { Navbar, Button, FormControl, Form } from "react-bootstrap";
 import { GoogleLogout } from 'react-google-login';
 import { history } from "../../redux/helpers/history";
 import { userActions } from "../../redux/actions/user-actions";
+import ScrollableList from '../ScrollableList/ScrollableList';
+import Card from "../Card/Card";
 
 class Profile extends React.Component{
     constructor(props){
@@ -38,29 +40,43 @@ class Profile extends React.Component{
     }
 
     render() {
+
+        let listItems = []
+        for (let i = 0; i < 10000; i++) {
+            listItems.push({ id: i, content: i })
+        }
+
+        let newList = [];
+        for (let i = 0; i < 5; i++) {
+            newList.push({ 
+                id: i, 
+                content: (<Card />) 
+            })
+        }
+
         return (
             <div>
-                <Navbar bg="light" expand="lg">
+                <Navbar className="bg-light">
                     <Navbar.Brand href="#home">MicroTransacciones UN</Navbar.Brand>
                     <GoogleLogout 
-                        className="logout"
                         clientId="559277341660-h7e8nbn28ti8ldn4uvkgi9l389sid45f.apps.googleusercontent.com"
                         buttonText="Logout"
                         onLogoutSuccess={this.logout}
                         render={renderProps => (
-                            <button className="button" onClick={renderProps.onClick} disabled={renderProps.disabled}>Login</button>
+                            <button className="button" onClick={renderProps.onClick} disabled={renderProps.disabled}>Logout</button>
                         )}>
                     </GoogleLogout>
                 </Navbar>
                 <div className="card">
                     <h1>{this.props.user.firstname} {this.props.user.lastname}</h1>
-                    <p>Tu saldo es:</p>
-                    <Badge word={this.state.word} />
-                    <p>
-                        <Icon name="github" onMouseOverEvent={this.onMouseOver.bind(this)} onMouseOutEvent={this.onMouseOut.bind(this)}/>
-                        <Icon name="codePen" onMouseOverEvent={this.onMouseOver.bind(this)} onMouseOutEvent={this.onMouseOut.bind(this)}/>
-                        <Icon name="twitter" onMouseOverEvent={this.onMouseOver.bind(this)} onMouseOutEvent={this.onMouseOut.bind(this)}/>
-                    </p>
+                    <h2>{this.props.user.username}</h2>
+                    <p>Tus tarjetas:</p>
+                    <ScrollableList 
+                        listItems={newList}
+                        heightOfItem={40}
+                        maxItemsToRender={30}
+                        style={{ color: '#333' }}
+                    />
                 </div>
             </div>
         );
