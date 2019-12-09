@@ -7,23 +7,27 @@ import tiun from "../../img/tiun.png";
 class TCard extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            id: '2F:5D:4X:2I'
+        }
     }
 
-    onClick = e => {
-        console.log("clicked");
+    onClick = () => {
+        this.props.onClick(this.props.id);
     }
 
     render() {
         return (
             <div >
                 <div width="50%">
-                    <p>2F:5D:4X:2I</p>
+                    <p>{this.props.id}</p>
                 </div>
                 <div width="50%" className="card-div">
                     <Card border="success" style={{ width: '60%' }}>
                         <Card.Body>
                             <Card.Title>Saldo: </Card.Title>
-                            <Card.Text> $12.900 </Card.Text>
+                            <Card.Text> ${this.props.balance} </Card.Text>
+                            <br />
                             <button className="button"
                                 onClick={this.onClick}>
                                     Ver Transacciones

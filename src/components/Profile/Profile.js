@@ -9,10 +9,18 @@ import { history } from "../../redux/helpers/history";
 import { userActions } from "../../redux/actions/user-actions";
 import ScrollableList from '../ScrollableList/ScrollableList';
 import Card from "../Card/Card";
+import RegisterCardModal from "../RegisterCard/RegisterCard";
+import TransactionList from "../Transactions/TransactionsList";
 
 class Profile extends React.Component{
     constructor(props){
         super(props);
+
+        this.state = {
+            registerCard: false,
+            transactionList: false,
+            transactionsId: undefined
+        }
     }
 
     componentWillMount() {
@@ -36,21 +44,45 @@ class Profile extends React.Component{
         const { dispatch } = this.props;
         history.push("/");
         dispatch(userActions.logout());
-        // history.push("#");
+    }
+
+    registerCard = (e) => {
+        this.setState({
+            registerCard: true,
+            transactionList: false,
+            transactionsId: undefined
+        });
+    }
+
+    hideModals = (e) => {
+        this.setState({
+            registerCard: false,
+            transactionList: false,
+            transactionsId: undefined
+        });
+    }
+
+    showTransactionListModal = (id) => {
+        console.log("Showing modal with id " + id);
+        this.setState({
+            registerCard: false,
+            transactionList: true,
+            transactionsId: id
+        });
+    }
+
+    submitNewCard = (value) => {
+        console.log("Submitting new card with id");
+        console.log(value);
     }
 
     render() {
 
-        let listItems = []
-        for (let i = 0; i < 10000; i++) {
-            listItems.push({ id: i, content: i })
-        }
-
-        let newList = [];
+        let cardList = [];
         for (let i = 0; i < 5; i++) {
-            newList.push({ 
+            cardList.push({ 
                 id: i, 
-                content: (<Card />) 
+                content: (<Card id={"2F:5D:4X:2I"} balance={12900} onClick={(id) => this.showTransactionListModal(id)}/>) 
             })
         }
 
@@ -71,13 +103,30 @@ class Profile extends React.Component{
                     <h1>{this.props.user.firstname} {this.props.user.lastname}</h1>
                     <h2>{this.props.user.username}</h2>
                     <p>Tus tarjetas:</p>
-                    <ScrollableList 
-                        listItems={newList}
-                        heightOfItem={40}
-                        maxItemsToRender={30}
-                        style={{ color: '#333' }}
-                    />
+                    {(cardList && cardList.length > 0) && (
+                        <ScrollableList 
+                            listItems={cardList}
+                            heightOfItem={40}
+                            maxItemsToRender={30}
+                            style={{ color: '#333' }}
+                        />
+                    )}
+                    {(!cardList || cardList.length == 0) &&
+                        <p>No tienes tarjetas registradas</p>
+                    }
+                    <button className="button add-card"
+                        onClick={this.registerCard}>
+                        Registra Una tarjeta
+                    </button>
                 </div>
+                <RegisterCardModal 
+                    smShow={this.state.registerCard} 
+                    onHide={this.hideModals}
+                    onSubmit={this.submitNewCard}/>
+                <TransactionList 
+                    show={this.state.transactionList}
+                    hide={this.hideModals}
+                    id={this.state.transactionsId}/>
             </div>
         );
     }

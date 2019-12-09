@@ -61,6 +61,7 @@ a:hover {
 }
 
 .card {
+  align-items: center;
   display: block;
   font-size: 22px;
   width: 350px;
@@ -82,6 +83,10 @@ a:hover {
   font-weight: bold;
   font-size: 9pt;
   outline: none;
+}
+
+.add-card{
+  margin: 10px;
 }
 
 button:active {
