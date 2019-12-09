@@ -7,9 +7,6 @@ import tiun from "../../img/tiun.png";
 class TCard extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            id: '2F:5D:4X:2I'
-        }
     }
 
     onClick = () => {
@@ -41,13 +38,3 @@ class TCard extends React.Component{
 }
 
 export default TCard;
-
-// function mapStateToProps(state) {
-//     const user = state.authentication.user;
-//     return {
-//         user
-//     };
-// }
-  
-// const connectedTCard = connect(mapStateToProps)(TCard);
-// export default connectedTCard;
