@@ -11,7 +11,7 @@ import { PrivateRoute, PublicRoute } from "./private-route/SpecialRoutes";
 const AppRouters = () => (
   // <App>
     <Switch>
-      <Route exact path="/" component={Login} />
+      <PublicRoute exact path="/" component={Login} />
       {/* <Route exact path="/Login" component={Login} /> */}
       <Route exact path="/Keypad" component={Keypad} />
       {/* <Route exact path="/Profile" component={Profile} /> */}

@@ -1,0 +1,10 @@
+.form-control{
+    width: 20% !important;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.form-div{
+    align-items: center;
+    align-content: center;
+}
